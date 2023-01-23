@@ -39,11 +39,11 @@ int makeSineWave(float freq, int_least32_t duration)
 
     if (freq < minFreq || freq > maxFreq)
     {
-        throw invalid_argument("Frequency must be in the range of human hearing (20 Hz - 20 kHz).");
+        throw invalid_argument("Frequency must be in the natural range (0 Hz - 24 kHz).");
     }
-    if (duration <= 0 || duration > maxDuration)
+    if (duration < 0 || duration > maxDuration)
     {
-        throw invalid_argument("Duration must be in the range of 1 - 30 seconds.");
+        throw invalid_argument("Duration must be in the range of 0 - 30 seconds.");
     }
 
     ofstream audioFile;
@@ -102,7 +102,7 @@ int main()
     int duration;
 
     cout << directions << endl;
-    cout << "Frequency (20 Hz - 20 kHz): " << endl;
+    cout << "Frequency (0 Hz - 24 kHz): " << endl;
     cin >> freq;
     cout << "Seconds (1 - 30): " << endl;
     cin >> duration;
